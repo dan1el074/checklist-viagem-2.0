@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist de Viagem</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Checklist de Viagens</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Cronograma:</h2>
+            <form id="formData">
+                <img src="img/calendario.svg" alt="Ícone calendário">
+                <input type="date">
+                <button type="submit" class="btn-salvar">Salvar</button>
+            </form>
+            <form id="formDestino">
+                <img src="img/sol.svg" alt="Ícone paisagem">
+                <input type="text" placeholder="Destino">
+                <button type="submit" class="btn-salvar">Salvar</button>
+            </form>
+        </section>
+        <section>
+            <h2>Checklist da sua viagem:</h2>
+            <form class="checklist" id="formNovoItem">
+                <input type="text" class="input-number" placeholder="00" pattern="\d*" maxlength="3">
+                <input type="text" placeholder="Nome do item">
+                <div>
+                    <button type="submit" class="btn-adicionar">
+                        <img src="img/add.svg" alt="Ícone adicionar">
+                    </button>
+                </div>
+            </form>
+        </section>
+        <section class="lista">
+            <div class="erro">
+                <img src="img/Ilustração.png" alt=" Ilustração">
+                <h2>Nenhuma tarefa encontrada!</h2>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>
+            Design by
+            <span>●</span>
+            Daniel Vargas
+        </p>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+:root {
+  --cor-texto: #171717;
+  --cor-fundo: #f1f1f2;
+  --cor-secundaria: #5418cc;
+  --cinza-claro: #e5e5e5;
+  --cinza-escuro: #c6c6c6;
+  --cinza-escuro2: #a6a6a6;
+  --cor-delete: #c22e2e;
+}
+
+html {
+  width: 100%;
+}
+
+body {
+  color: var(--cor-texto);
+  background-color: var(--cor-fundo);
+}
+
+/* /////////////// Tipografia /////////////// */
+h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+p {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+form input,
+.btn-salvar,
+.item {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* /////////////// Header /////////////// */
+header {
+  padding: 40px 0;
+  text-align: center;
+  background-image: url("/img/background.png");
+  background-size: contain;
+  background-repeat: repeat-x;
+}
+
+/* /////////////// Main /////////////// */
+main {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 16px;
+  margin: 0 auto;
+  max-width: 800px;
+  min-height: 79.7vh;
+}
+
+section {
+  margin-bottom: 36px;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 15% 70% 15%;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--cinza-claro);
+  border-radius: 15px;
+  padding: 16px 20px;
+  width: 90%;
+  margin: 0 auto 16px;
+}
+
+form.checklist {
+  padding: 11px 12px 11px 20px;
+}
+
+form img {
+  width: 24px;
+  height: 24px;
+}
+
+form input {
+  background-color: transparent;
+  border: none;
+  padding: 0 8px 0 0;
+}
+
+form input:focus {
+  outline: none;
+}
+
+form input:hover {
+  cursor: text;
+}
+
+form input[type="text"] {
+  min-width: 120px;
+}
+
+form input[type="text"].input-number {
+  max-width: 50px;
+  min-width: 27px;
+}
+
+input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  margin: 0 auto 0 0;
+}
+
+form .btn-salvar {
+  background-color: transparent;
+  border: none;
+  color: var(--cor-secundaria);
+  cursor: pointer;
+}
+
+form .btn-adicionar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 43px;
+  height: 43px;
+  background-color: var(--cor-secundaria);
+  border-radius: 8px;
+  border: none;
+  margin: 0 0 0 auto;
+  cursor: pointer;
+}
+
+form .btn-adicionar img {
+  width: 22px;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 10% 90%;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
+  border: 2px solid var(--cinza-escuro2);
+  border-radius: 15px;
+  padding: 0 12px 0 20px;
+  width: 90%;
+  margin: 0 auto 10px;
+}
+
+.item label {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding-top: 11px;
+  padding-bottom: 11px;
+}
+
+.item label div span {
+  margin-right: 10px;
+}
+
+.item .btn-deletar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: var(--cor-delete);
+  border-radius: 8px;
+  border: none;
+  margin: 0 0 0 auto;
+  cursor: pointer;
+}
+
+.item .btn-deletar img {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.item input{
+  accent-color: var(--cor-secundaria);
+  width: 20px;
+  height: 20px;
+}
+
+.item input:checked::before{
+  border: none;
+  color: var(--cor-secundaria);
+}
+
+.item.item-ativo{
+  border: 2px solid var(--cor-secundaria)
+}
+
+.erro {
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.erro h2 {
+  margin-top: 8px;
+}
+
+/* /////////////// Footer /////////////// */
+footer {
+  color: var(--cor-texto);
+  background-color: var(--cinza-escuro);
+  border-top: 2px solid var(--cinza-escuro2);
+  padding: 30px 0;
+}
+
+footer p {
+  text-align: center;
+}
+
+footer p span {
+  color: var(--cor-secundaria);
+}
+
+/* /////////////// Media query /////////////// */
+@media (max-width: 960px) {
+  header {
+    background-size: cover;
+  }
+
+  main {
+    min-height: 79vh;
+  }
+}
+
+@media (max-width: 420px) {
+  form {
+    padding: 16px 16px;
+  }
+}
