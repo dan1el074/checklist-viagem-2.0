@@ -9,4 +9,4 @@ Esse projeto foi, na verdade, uma prova pessoal de como estavam meus conheciment
 Projeto é voltado para uso mobile e desktop, em que cada usuário que entrar, terá um checklist próprio. Nessa aplicação não foi usado nenhum banco de dados, todos os dados são salvos no próprio navegador usando o Local Storage.
 Nele, é possível adicionar o dia da viagem, o destino, adicionar infinitos itens como roupas, itens pessoais, documentos, e atualizar itens presentes adicionando um com o mesmo nome.
 
-Se quiser dar uma olhada, basta entrar aqui [nesse link](https://dan1el074.github.io/checklist-viagem/) e dar uma olhada 😉. 
+Se quiser dar uma olhada, basta entrar aqui [nesse link](https://dan1el074.github.io/checklist-viagem-2.0/) e dar uma olhada 😉. 
