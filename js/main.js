@@ -158,11 +158,12 @@ function atualizarLista() {
 
 function tratarString(string) {
     const pattern = /^[a-zA-Z\s]*$/g
-    const novaString = string.toLowerCase().trim().match(pattern)
+    const novaString = string.toLowerCase().trim()
+        // .match(pattern)
 
     if(!novaString) {
         return ''
     } else {
-        return novaString[0]
+        return novaString
     }   
 }
