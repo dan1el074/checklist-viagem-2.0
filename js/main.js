@@ -2,16 +2,17 @@ const $formData = document.getElementById('formData');
 const $formDestino = document.getElementById('formDestino');
 const $formNovoItem = document.getElementById('formNovoItem');
 const $lista = document.querySelector('.lista');
-const $erro = document.querySelector('.erro')
 const listaItens = JSON.parse(localStorage.getItem('itens')) || [];
 
-$formData.querySelector('input').value = localStorage.getItem('data')
-$formDestino.querySelector('input').value = localStorage.getItem('destino')
+$formData.querySelector('input').value = localStorage.getItem('data');
+$formDestino.querySelector('input').value = localStorage.getItem('destino');
 
-if(listaItens) {
+if(listaItens.length > 0) {
     listaItens.forEach(item => {
         renderizarItem(item)
     });
+} else {
+    renderizarErro()
 }
 
 $formData.addEventListener('submit', event => {
@@ -27,12 +28,18 @@ $formDestino.addEventListener('submit', event => {
 $formNovoItem.addEventListener('submit', event => {
     event.preventDefault()
     const dados = event.target.parentNode.querySelectorAll('input')
-    // TODO: se ouver um item com o mesmo nome, atualizar ele!
-    // if(buscar no "array.nome" se já tem um "dados[1].value"){
-        criarNovoItem(dados)
-    // } else {
-    //     atualizaItem(dados)
-    // }
+    dados[1].value = tratarString(dados[1].value)
+
+    if(dados[1].value) {
+        const existe = listaItens.findIndex(itens => itens.nome === dados[1].value)
+
+        if(existe == -1){
+            return criarNovoItem(dados)
+        }
+        return atualizarItem(dados, existe)
+    } else {
+        alert('O nome informado é inválido!')
+    }
 })
 
 function criarNovoItem(array) {
@@ -43,17 +50,20 @@ function criarNovoItem(array) {
         check: false
     }
 
-    limparFormulario()
-
     listaItens.push(novoItem)
-    localStorage.setItem('itens', JSON.stringify(listaItens))
+    atualizarLista()
+}
 
-    $lista.innerHTML = ''
-    listaItens.forEach(item => {
-        renderizarItem(item)
-    })
-
-    $formNovoItem[0].focus()
+function atualizarItem(dados, index) {
+    const item = listaItens[index]
+    const itemEditado = {
+        id: item.id,
+        numero: dados[0].value,
+        nome: item.nome,
+        check: false
+    }
+    listaItens.splice(index, 1, itemEditado)
+    atualizarLista()
 }
 
 function renderizarItem(object) {
@@ -70,8 +80,6 @@ function renderizarItem(object) {
         </label>`
 
     $item.querySelector('label').appendChild(criarBotaoDeletar(object.id))
-
-    $erro.remove()
     $lista.appendChild($item)
 
     if(object.check) {
@@ -106,8 +114,10 @@ function deletarItem(id) {
     localStorage.setItem('itens', JSON.stringify(listaItens))
     const $itemDeletado = document.getElementById(`item${id}`)
     $itemDeletado.remove()
-    //TODO: se remover o último item, voltar com a imagem de erro!
-    // ou mudar a lógica pra ele aparecer quando o "listaItens" estiver vazio
+    
+    if(listaItens.length < 1){
+        renderizarErro()
+    }
 }
 
 function atualizaCheckbox(id){
@@ -123,4 +133,36 @@ function atualizaCheckbox(id){
     }
 
     localStorage.setItem('itens', JSON.stringify(listaItens))
+}
+
+function renderizarErro(){
+    const template = `<div class="erro">
+            <img src="img/Ilustração.png" alt=" Ilustração">
+            <h2>Nenhuma tarefa encontrada!</h2>
+        </div>`
+    $lista.innerHTML = template
+}
+
+function atualizarLista() {
+    localStorage.setItem('itens', JSON.stringify(listaItens))
+
+    limparFormulario()
+
+    $lista.innerHTML = ''
+    listaItens.forEach(item => {
+        renderizarItem(item)
+    })
+
+    $formNovoItem[0].focus()
+}
+
+function tratarString(string) {
+    const pattern = /^[a-zA-Z\s]*$/g
+    const novaString = string.toLowerCase().trim().match(pattern)
+
+    if(!novaString) {
+        return ''
+    } else {
+        return novaString[0]
+    }   
 }

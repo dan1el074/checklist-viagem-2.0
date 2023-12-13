@@ -170,6 +170,7 @@ form .btn-adicionar img {
 
 .item label div span {
   margin-right: 10px;
+  text-transform: capitalize;
 }
 
 .item .btn-deletar {
@@ -195,6 +196,7 @@ form .btn-adicionar img {
   accent-color: var(--cor-secundaria);
   width: 20px;
   height: 20px;
+  cursor: pointer;
 }
 
 .item input:checked::before{
